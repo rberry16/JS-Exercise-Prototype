@@ -111,15 +111,15 @@ Baby.prototype.play = function(){
   return `Playing with ${this.favoriteToy}`
 }
 const Addie = new Baby('Addie', 1, 'mouse')
-console.log(Addie)
+console.log(Addie.play())
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. When called after a dot in a function it sets the object as 'this'.
+  2. when used in a constructor function it refers to the instance of the object being created.
+  3. In an object's global scope it has the value of said object.
+  4. It explicitly defines objects during call functions.
 */
 
 
