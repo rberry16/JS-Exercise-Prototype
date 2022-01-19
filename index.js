@@ -89,17 +89,12 @@ Car.prototype.fill = function(gallons){
   this.tank = this.tank + gallons;
 }
 Car.prototype.drive = function(distance){
-  this.odometer = distance;
+  this.odometer = this.odometer + distance;
   this.tank = this.tank - (distance / this.milesPerGallon);
-  if (this.tank < (this.milesPerGallon * distance)){
-    return `I ran out of fuel at ${this.odometer} miles!`
-  }
+  
 }
 const Kia = new Car('sedan', 10)
-Kia.fill(10);
-console.log(Kia.tank)
-Kia.drive(200)
-console.log(Kia)
+
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -107,10 +102,16 @@ console.log(Kia)
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+function Baby(name, age, favoriteToy) {
+ Person.call(this, name, age);
+ this.favoriteToy = favoriteToy;
 }
-
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`
+}
+const Addie = new Baby('Addie', 1, 'mouse')
+console.log(Addie)
 
 /* 
   TASK 4
